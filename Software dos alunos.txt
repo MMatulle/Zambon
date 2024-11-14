@@ -1,0 +1,145 @@
+import java.util.Scanner;
+
+class Aluno {
+    private String nome;
+    private String matricula;
+    private String sexo;
+    private String dataNascimento;
+    private String curso;
+    private int anoInicio;
+    private double notaProva1;
+    private double notaProva2;
+    private double mediaTrabalhos;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    public int getAnoInicio() {
+        return anoInicio;
+    }
+
+    public void setAnoInicio(int anoInicio) {
+        this.anoInicio = anoInicio;
+    }
+
+    public double getNotaProva1() {
+        return notaProva1;
+    }
+
+    public void setNotaProva1(double notaProva1) {
+        this.notaProva1 = notaProva1;
+    }
+
+    public double getNotaProva2() {
+        return notaProva2;
+    }
+
+    public void setNotaProva2(double notaProva2) {
+        this.notaProva2 = notaProva2;
+    }
+
+    public double getMediaTrabalhos() {
+        return mediaTrabalhos;
+    }
+
+    public void setMediaTrabalhos(double mediaTrabalhos) {
+        this.mediaTrabalhos = mediaTrabalhos;
+    }
+
+    public double calcularMediaFinal() {
+        return (notaProva1 + notaProva2 + mediaTrabalhos) / 3;
+    }
+
+    public boolean estaAprovado() {
+        return calcularMediaFinal() >= 6;
+    }
+}
+
+class TesteAluno {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Aluno aluno = new Aluno();
+
+        System.out.println(">>> INÍCIO SOFTWARE ALUNO <<<");
+        System.out.print("Informe o nome do aluno: ");
+        aluno.setNome(sc.nextLine());
+
+        System.out.print("Informe a matrícula: ");
+        aluno.setMatricula(sc.nextLine());
+
+        System.out.print("Informe o sexo: ");
+        aluno.setSexo(sc.nextLine());
+
+        System.out.print("Informe a data de nascimento: ");
+        aluno.setDataNascimento(sc.nextLine());
+
+        System.out.print("Informe o curso: ");
+        aluno.setCurso(sc.nextLine());
+
+        System.out.print("Informe o ano de início: ");
+        aluno.setAnoInicio(sc.nextInt());
+
+        System.out.print("Informe a Nota da Prova 1: ");
+        aluno.setNotaProva1(sc.nextDouble());
+
+        System.out.print("Informe a Nota da Prova 2: ");
+        aluno.setNotaProva2(sc.nextDouble());
+
+        System.out.print("Informe a média dos Trabalhos: ");
+        aluno.setMediaTrabalhos(sc.nextDouble());
+
+        System.out.println("### INFORMAÇÕES ###");
+        System.out.println("Nome: " + aluno.getNome());
+        System.out.println("Matrícula: " + aluno.getMatricula());
+        System.out.println("Nome do curso: " + aluno.getCurso());
+
+        double mediaFinal = aluno.calcularMediaFinal();
+        if (aluno.estaAprovado()) {
+            System.out.printf("Situação: Aprovado com média %.2f\n", mediaFinal);
+        } else {
+            System.out.printf("Situação: Reprovado com média %.2f\n", mediaFinal);
+        }
+
+        System.out.println(">>> Fim da execução do software <<<");
+
+        sc.close();
+    }
+}
